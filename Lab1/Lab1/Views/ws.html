@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../Scripts/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <input id="start" type="button" value="Start" />
+    <input id="stop" type="button" value="Stop" />
+    <label>
+        Received Message: <span id="message"></span>
+    </label>
+</body>
+<script>
+    const pageUrl = window.location.origin.replace("http://", "");
+    const websocketPath = `ws://${pageUrl}/handlers/ws`;
+
+    let socket;
+
+    const start = $("#start");
+    const stop = $("#stop");
+    const message =$("#message");
+
+    start.click(() => {
+        start.prop("disabled", true);
+
+        socket = new WebSocket(websocketPath);
+
+        socket.onopen = () => {
+            socket.send("Connecting....");
+            start.prop("disabled", false);
+            stop.prop("disabled", false);
+        }
+
+        socket.onerror = e => {
+            console.log(e);
+            start.prop('disabled', false);
+            stop.prop('disabled', false);
+        }
+
+        socket.onmessage = e => {
+            message.text(e.data);
+        }
+    });
+
+    stop.click(() => {
+        if(socket) {
+            socket.close();
+            socket = null;
+
+            start.prop('disabled', false);
+            stop.prop('disabled', true);
+        }
+    });
+</script>
+</html>
