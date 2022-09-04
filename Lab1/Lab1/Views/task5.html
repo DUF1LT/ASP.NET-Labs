@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../Scripts/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <form id="form">
+        <label>
+            X: <input id="x" name="X" aria-label="Y" type="text" />
+        </label>
+        <label>
+            Y: <input id="y" name="Y" aria-label="Y" type="text" />
+        </label>
+        <input id="submit" type="submit" value="Send" />
+        <label>
+            Multuplication Result: <input readonly id="result" name="result" type="text" />
+        </label>
+    </form>
+</body>
+<script>
+    const form = $("form");
+    const xInput = document.getElementById("x");
+    const yInput = document.getElementById("y");
+    const submitButton = document.getElementById("submit");
+    const resultInput = document.getElementById("result");
+
+    submitButton.addEventListener("click", ev => {
+        ev.preventDefault();
+        debugger
+        console.log(form);
+
+        fetch(`/handlers/handler3?${form.serialize()}`, {
+            method: "POST"
+        }).then(r => r.text()).then(d => resultInput.value = d);
+    })
+
+</script>
+</html>

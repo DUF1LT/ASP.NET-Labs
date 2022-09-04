@@ -6,10 +6,10 @@ namespace Lab1.Handlers
     {
         public void ProcessRequest(HttpContext context)
         {
-            var parameterA = context.Request.Params["ParmA"];
-            var parameterB = context.Request.Params["ParmB"];
+            var parameterA = context.Request.Params["ParamA"];
+            var parameterB = context.Request.Params["ParamB"];
 
-            context.Response.Write($"{context.Request.HttpMethod}-Http-NVV: ParmA = {parameterA}, ParmB = {parameterB}");
+            context.Response.Write($"{context.Request.HttpMethod}-Http-NVV: ParamA = {parameterA}, ParamB = {parameterB}");
         }
 
         public bool IsReusable => true;
