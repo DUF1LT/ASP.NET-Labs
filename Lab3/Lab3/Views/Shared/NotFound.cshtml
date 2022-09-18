@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+    HttpContextBase context = (HttpContextBase)ViewData["Context"];
+
+    var r = context.Request;
+}
+
+<h1>@context.Request.HttpMethod: @context.Request.Params["aspxerrorpath"] is not supporter</h1>
+

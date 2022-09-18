@@ -1,0 +1,22 @@
+﻿@model Lab3.ViewModels.RecordViewModel
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Add", "Dictionary", FormMethod.Post, new { @class="form"}))
+{
+    <div class="form-group">
+        <label>Enter surname: </label>
+        @Html.TextBoxFor(r => r.Surname, "", new {@class = "form-control", placeholder= "Surname"})
+        @Html.ValidationMessageFor(r => r.Surname, "", new {@class = "text-danger"})
+    </div>
+
+    <div class="form-group">
+        <label>Enter phone: </label>
+        @Html.TextBoxFor(r => r.Phone, "", new {@class = "form-control",  placeholder= "Phone"})
+        @Html.ValidationMessageFor(r => r.Phone, "", new {@class = "text-danger"})
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Send" />
+}

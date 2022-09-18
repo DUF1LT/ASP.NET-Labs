@@ -1,0 +1,24 @@
+﻿@model (string id, RecordViewModel model)
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Update", "Dictionary", FormMethod.Post, new { @class="form"}))
+{
+    @Html.HiddenFor(r => r.id)
+
+    <div class="form-group">
+        <label>Edit surname: </label>
+        @Html.TextBox("Surname", Model.model.Surname, new {@class = "form-control", placeholder= "Surname"})
+        @Html.ValidationMessage("Surname", "", new {@class = "text-danger"})
+    </div>
+
+    <div class="form-group">
+        <label>Edit phone: </label>
+        @Html.TextBox("Phone", Model.model.Phone, new {@class = "form-control",  placeholder= "Phone"})
+        @Html.ValidationMessage("Phone", "", new {@class = "text-danger"})
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Edit" />
+}
