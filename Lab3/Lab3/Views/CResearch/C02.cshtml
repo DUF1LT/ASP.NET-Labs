@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+    HttpRequestBase request = ViewBag.Request;
+    HttpResponseBase response = ViewBag.Response;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>C02</title>
+</head>
+<body>
+    <h3>C02</h3>
+    <h4>Статус: @response.Status</h4>
+    <h4>Заголовки:</h4>
+    <p>
+        @for (int i = 0; i < response.Headers.Count; i++)
+        {
+            <br /> @response.Headers.GetKey(i)
+            <span> = </span>
+            @response.Headers.Get(response.Headers.GetKey(i))
+        }
+    </p>
+    <h4>Тело:</h4>
+    <p>
+        @using (var reader = new StreamReader(request.InputStream))
+        {
+            var body = reader.ReadToEnd();
+            @body
+        }
+    </p>
+</body>
+</html>

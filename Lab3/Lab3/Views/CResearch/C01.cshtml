@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+    HttpRequestBase request = ViewBag.Request;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>C01</title>
+</head>
+<body>
+    <h3>C01</h3>
+    <h4>Метод запоса: @ViewBag.Method</h4>
+    <h4>Uri: @request.Url</h4>
+    <h4>Query-параметры: </h4>
+    <p>
+        @for (int i = 0; i < request.QueryString.Count; i++)
+        {
+            <br /> @request.QueryString.GetKey(i)
+            <span> : </span>
+            @request.QueryString.Get(request.QueryString.GetKey(i))
+        }
+    </p>
+
+    <h4>Заголовки: </h4>
+    <p>
+        @for (int i = 0; i < request.Headers.Count; i++)
+        {
+            <br /> @request.Headers.GetKey(i)
+            <span> : </span>
+            @request.Headers.Get(request.Headers.GetKey(i))
+        }
+    </p>
+
+    @if (ViewBag.Method == "POST")
+    {
+    <h4>Тело(для post-запроса)</h4>
+        <p>
+            @using (var reader = new StreamReader(request.InputStream))
+            {
+                var body = reader.ReadToEnd();
+                @body
+            }
+        </p>
+    }
+</body>
+</html>
