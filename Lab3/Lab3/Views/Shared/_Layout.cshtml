@@ -8,21 +8,23 @@
     <title>Phone Dictionary</title>
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            @Html.ActionLink("Phone Dictionary", "Index", "Dictionary", new { area = "" }, new { @class = "navbar-brand" })
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Add", "Add", "Dictionary")</li>
-            </ul>
-        </div>
-    </div>
-</div>
+@RenderSection("header", false)
+@* <div class="navbar navbar-inverse navbar-fixed-top"> *@
+@*     <div class="container"> *@
+@*         <div class="navbar-header"> *@
+@*             @Html.ActionLink("Phone Dictionary", "Index", "Dictionary", new { area = "" }, new { @class = "navbar-brand" }) *@
+@*         </div> *@
+@*         <div class="navbar-collapse collapse"> *@
+@*             <ul class="nav navbar-nav"> *@
+@*                 <li>@Html.ActionLink("Add", "Add", "Dictionary")</li> *@
+@*             </ul> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@
 <div class="container body-content body">
     @RenderBody()
 </div>
+@RenderSection("footer", false)
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")

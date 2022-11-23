@@ -1,6 +1,6 @@
 ﻿using System;
-using Lab3.Models;
 using Lab3.ViewModels;
+using Models.Models;
 
 namespace Lab3.Creators
 {
@@ -10,7 +10,7 @@ namespace Lab3.Creators
         {
             return new Record
             {
-                 Id = Guid.NewGuid().ToString(),
+                 Id = viewModel.Id,
                  Surname = viewModel.Surname,
                  Phone = viewModel.Phone,
             };

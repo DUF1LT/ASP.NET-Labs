@@ -1,7 +1,31 @@
-﻿@model IReadOnlyCollection<Lab3.Models.Record>
+﻿@model IReadOnlyCollection<Models.Models.Record>
 
 @{
-    Layout = "../Shared/_Layout.cshtml";
+  Layout = "../Shared/_Layout.cshtml";
+}
+
+@* @helper help { } *@
+
+@section header
+{
+  <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+          <div class="navbar-header">
+              @Html.ActionLink("Phone Dictionary", "Index", "Dictionary", new { area = "" }, new { @class = "navbar-brand" })
+          </div>
+          <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                  <li>@Html.ActionLink("Add", "Add", "Dictionary")</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+}
+@section footer
+{
+  <div class="footer navbar-fixed-bottom">
+     Footer
+  </div>
 }
 
 <table class="table">
@@ -17,11 +41,7 @@
     {
       foreach (var record in Model)
       {
-        <tr>
-          <td>@record.Surname</td>
-          <td>@record.Phone</td>
-          <td>@Html.ActionLink("Edit", "Update", new { id = record.Id }) | @Html.ActionLink("Delete", "DeleteConfirmation", new { id = record.Id })</td>
-        </tr>
+        @Html.Partial("RecordRow", record)
       }
     }
     else

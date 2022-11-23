@@ -1,0 +1,31 @@
+﻿@model IReadOnlyCollection<Lab8.Models.Record>
+
+@{
+  Layout = "../Shared/_Layout.cshtml";
+}
+
+@* @helper help { } *@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Surname</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @if (Model.Count > 0)
+    {
+      foreach (var record in Model)
+      {
+        @Html.Partial("RecordRow", record)
+      }
+    }
+    else
+    {
+      <tr>
+        <td class="text-center" colspan="3"><h3>There are no records in dictionary yet!</h3></td>
+      </tr>
+    }
+  </tbody>
+</table>

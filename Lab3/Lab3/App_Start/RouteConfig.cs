@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Lab3
@@ -13,12 +9,11 @@ namespace Lab3
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //Lab3
-            // routes.MapRoute(
-            //     name: "Default",
-            //     url: "{controller}/{action}/{id}",
-            //     defaults: new { controller = "Dictionary", action = "Index", id = UrlParameter.Optional }
-            // );
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
 
             //Lab5a
             // routes.MapRoute(
@@ -69,19 +64,19 @@ namespace Lab3
 
             //Lab5b
 
-            routes.MapMvcAttributeRoutes();
-
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "AResearch", action = "AA", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "Default2",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "CHResearch", action = "AD", id = UrlParameter.Optional }
-            );
+            // routes.MapMvcAttributeRoutes();
+            //
+            // routes.MapRoute(
+            //     name: "Default",
+            //     url: "{controller}/{action}/{id}",
+            //     defaults: new { controller = "AResearch", action = "AA", id = UrlParameter.Optional }
+            // );
+            //
+            // routes.MapRoute(
+            //     name: "Default2",
+            //     url: "{controller}/{action}/{id}",
+            //     defaults: new { controller = "CHResearch", action = "AD", id = UrlParameter.Optional }
+            // );
         }
     }
 }

@@ -1,0 +1,7 @@
+﻿@model Models.Models.Record
+
+<tr>
+    <td>@Model.Surname</td>
+    <td>@Model.Phone</td>
+    <td>@Html.ActionLink("Edit", "Update", new { id = Model.Id }) | @Html.ActionLink("Delete", "DeleteConfirmation", new { id = Model.Id })</td>'
+</tr>

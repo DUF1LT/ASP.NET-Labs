@@ -1,12 +1,13 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using DbDataProvider;
 using Lab3.Creators;
-using Lab3.Models;
 using Lab3.Repository;
 using Lab3.ViewModels;
+using Models.Models;
+using Models.Repository;
 
 namespace Lab3.Controllers
 {
@@ -14,18 +15,9 @@ namespace Lab3.Controllers
     {
         private readonly IRepository<Record> _repository;
 
-        public DictionaryController()
+        public DictionaryController(IRepository<Record> repository)
         {
-            var shouldUseDb = bool.Parse(WebConfigurationManager.AppSettings["UseDatabase"]);
-
-            if (shouldUseDb)
-            {
-                _repository = new RecordDbRepository();
-            }
-            else
-            {
-                _repository = new RecordJsonRepository();
-            }
+            _repository = repository;
         }
 
         [HttpGet]

@@ -1,8 +1,11 @@
-﻿@model Lab3.ViewModels.RecordViewModel
+﻿@using Lab3.Views.Helpers
+@model Lab3.ViewModels.RecordViewModel
 
 @{
     Layout = "../Shared/_Layout.cshtml";
 }
+
+@Html.RecordForm()
 
 @using (Html.BeginForm("Add", "Dictionary", FormMethod.Post, new { @class="form"}))
 {
